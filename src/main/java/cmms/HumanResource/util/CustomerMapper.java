@@ -9,8 +9,7 @@ public class CustomerMapper {
 
     public static Customers CustomerRequestToCustomer (CustomerRequestDto requestDto){
 
-//        System.out.println("<======================================================================>");
-//        System.out.println(requestDto);
+
         return  Customers.builder()
                 .customerName(requestDto.getCustomerName())
                 .contactNumber(requestDto.getContactNumber())
