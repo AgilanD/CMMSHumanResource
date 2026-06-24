@@ -42,6 +42,10 @@ public class EmployeeMapper {
     public static EmployeeResponseDto convertToResponseDto(Employee employee) {
         return EmployeeResponseDto.builder()
                 .id(employee.getId())
+                .createdAt(employee.getCreatedAt())
+                .createdBy(employee.getCreatedBy())
+                .lastModifiedAt(employee.getLastModifiedAt())
+                .lastModifiedBy(employee.getLastModifiedBy())
                 .employeeCode(employee.getEmployeeCode())
                 .fullName(employee.getFullName())
                 .designation(employee.getDesignation())

@@ -28,7 +28,6 @@ public class CustomerRequestDto {
     @NotBlank(message = "Address cannot be empty")
     private String address;
 
-    // Optional field: Defaults to true via builder if the client does not send it
     @Builder.Default
     private Boolean isActive = true;
 

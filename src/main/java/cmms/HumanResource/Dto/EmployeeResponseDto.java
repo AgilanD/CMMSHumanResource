@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -24,6 +25,14 @@ public class EmployeeResponseDto {
 
     private Long plantId;
     private String plantName;
+
+
+
+
+    private LocalDateTime createdAt;
+    private Long createdBy ;
+    private LocalDateTime lastModifiedAt;
+    private Long lastModifiedBy ;
 
 }
 
