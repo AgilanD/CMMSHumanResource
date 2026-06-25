@@ -16,6 +16,7 @@ import java.util.List;
 public class CustomerServicesImpl implements CustomerServices{
 
     private final CustomerRepository customerRepository;
+    private final CustomerMapper customerMapper;
 
     public Customers AddCustomer(Customers customers){
         return  customerRepository.save(customers);
@@ -28,9 +29,9 @@ public class CustomerServicesImpl implements CustomerServices{
     public CustomerResponseDto CreateCustomer (CustomerRequestDto customerrequestDto){
 
 
-         Customers customer = AddCustomer(CustomerMapper.CustomerRequestToCustomer(customerrequestDto));
+         Customers customer = AddCustomer(customerMapper.CustomerRequestToCustomer(customerrequestDto));
 
-         return CustomerMapper.CustomerToCustomerResponseDto(customer);
+         return customerMapper.CustomerToCustomerResponseDto(customer);
 
     }
 

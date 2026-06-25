@@ -22,6 +22,7 @@ public class EmployeeServicesImpl implements EmployeeServices{
 
     private final PlantsRepository plantsRepository;
 
+    private final EmployeeMapper employeeMapper;
 
     @Override
     public List<EmployeeResponseDto> GetAllEmployee(){
@@ -42,11 +43,11 @@ public class EmployeeServicesImpl implements EmployeeServices{
         Plants plant = plantsRepository.findById(requestDto.getPlantId())
                 .orElseThrow(() -> new RuntimeException("Plant not found with ID: " + requestDto.getPlantId()));
 
-        Employee employee = EmployeeMapper.EmployeeResponseDtoToEmployee(plant,requestDto);
+        Employee employee = employeeMapper.EmployeeResponseDtoToEmployee(plant,requestDto);
 
         Employee savedEmployee = AddEmployee(employee);
 
-        return EmployeeMapper.EmployeeToEmployeeResponseDta(plant,savedEmployee);
+        return employeeMapper.EmployeeToEmployeeResponseDta(plant,savedEmployee);
 
     }
 

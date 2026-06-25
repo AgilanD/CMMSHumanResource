@@ -5,10 +5,12 @@ import cmms.HumanResource.Dto.EmployeeRequestDto;
 import cmms.HumanResource.Dto.EmployeeResponseDto;
 import cmms.HumanResource.entity.Employee;
 import cmms.HumanResource.entity.Plants;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmployeeMapper {
 
-    public static EmployeeResponseDto EmployeeToEmployeeResponseDta(Plants plant , Employee savedEmployee){
+    public EmployeeResponseDto EmployeeToEmployeeResponseDta(Plants plant , Employee savedEmployee){
 
         return EmployeeResponseDto.builder()
                 .id(savedEmployee.getId())
@@ -26,7 +28,7 @@ public class EmployeeMapper {
     }
 
 
-    public static Employee EmployeeResponseDtoToEmployee(Plants plant , EmployeeRequestDto requestDto){
+    public Employee EmployeeResponseDtoToEmployee(Plants plant , EmployeeRequestDto requestDto){
         Employee employee = Employee.builder()
                 .employeeCode("EMP-" + java.util.UUID.randomUUID().toString().substring(0, 5).toUpperCase())
                 .fullName(requestDto.getFullName())
