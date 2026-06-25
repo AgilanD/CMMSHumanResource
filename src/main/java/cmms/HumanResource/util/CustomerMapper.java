@@ -25,6 +25,12 @@ public class CustomerMapper {
 
         return CustomerResponseDto.builder()
                 .id(customer.getId())
+
+                .lastModifiedBy(customer.getLastModifiedBy())
+                .lastModifiedAt(customer.getLastModifiedAt())
+                .createdAt(customer.getCreatedAt())
+                .createdBy(customer.getCreatedBy())
+
                 .customerName(customer.getCustomerName())
                 .contactNumber(customer.getContactNumber())
                 .email(customer.getEmail())
