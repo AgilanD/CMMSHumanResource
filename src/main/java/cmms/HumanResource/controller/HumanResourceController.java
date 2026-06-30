@@ -9,6 +9,7 @@ import cmms.HumanResource.entity.Customers;
 import cmms.HumanResource.services.CustomerServices;
 import cmms.HumanResource.services.EmployeeServices;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,16 +37,6 @@ public class HumanResourceController {
     @PostMapping("/addEmployee")
     public EmployeeResponseDto addEmployee( @RequestBody EmployeeRequestDto requestDto) {
         return employeeservices.createEmployee(requestDto);
-    }
-
-    @GetMapping("/AllCustomers")
-    public List<Customers> AllCustomers(){
-        return customerservices.Allcustomer();
-    }
-
-    @PostMapping("/AddCustomer")
-    public CustomerResponseDto addCustomer(@RequestBody CustomerRequestDto customerRequestDto){
-        return customerservices.CreateCustomer(customerRequestDto);
     }
 
 }

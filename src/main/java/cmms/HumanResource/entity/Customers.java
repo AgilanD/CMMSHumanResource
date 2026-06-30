@@ -1,5 +1,6 @@
 package cmms.HumanResource.entity;
 
+import cmms.HumanResource.security.UserContext;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
@@ -61,5 +62,21 @@ public class Customers {
     @Builder.Default
     @Column(name = "last_modified_by", nullable = false)
     private Long lastModifiedBy = 1L;
+
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.lastModifiedAt = LocalDateTime.now();
+
+        this.createdBy = UserContext.getUserId();
+        this.lastModifiedBy = UserContext.getUserId();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.lastModifiedAt = LocalDateTime.now();
+        this.lastModifiedBy = UserContext.getUserId();
+    }
 
 }
