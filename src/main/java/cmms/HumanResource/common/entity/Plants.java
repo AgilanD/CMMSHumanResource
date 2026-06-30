@@ -1,4 +1,4 @@
-package cmms.HumanResource.entity;
+package cmms.HumanResource.common.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

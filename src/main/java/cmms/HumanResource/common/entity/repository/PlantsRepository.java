@@ -1,6 +1,6 @@
-package cmms.HumanResource.repository;
+package cmms.HumanResource.common.entity.repository;
 
-import cmms.HumanResource.entity.Plants;
+import cmms.HumanResource.common.entity.Plants;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,7 @@
 package cmms.HumanResource.entity;
 
 
+import cmms.HumanResource.common.entity.Plants;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Past;
 import lombok.AllArgsConstructor;

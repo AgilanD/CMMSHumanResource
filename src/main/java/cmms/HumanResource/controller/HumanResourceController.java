@@ -33,7 +33,6 @@ public class HumanResourceController {
         return "SuccessFully Created it ";
     }
 
-
     @PostMapping("/addEmployee")
     public EmployeeResponseDto addEmployee( @RequestBody EmployeeRequestDto requestDto) {
         return employeeservices.createEmployee(requestDto);

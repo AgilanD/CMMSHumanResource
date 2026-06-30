@@ -3,11 +3,10 @@ package cmms.HumanResource.services;
 import cmms.HumanResource.Dto.EmployeeRequestDto;
 import cmms.HumanResource.Dto.EmployeeResponseDto;
 import cmms.HumanResource.entity.Employee;
-import cmms.HumanResource.entity.Plants;
+import cmms.HumanResource.common.entity.Plants;
 import cmms.HumanResource.repository.EmployeeRepository;
-import cmms.HumanResource.repository.PlantsRepository;
+import cmms.HumanResource.common.entity.repository.PlantsRepository;
 import cmms.HumanResource.util.EmployeeMapper;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +29,6 @@ public class EmployeeServicesImpl implements EmployeeServices{
                 .map(EmployeeMapper::convertToResponseDto)
                 .collect(Collectors.toList());
     }
-
 
     @Override
     public Employee AddEmployee(Employee employee){
