@@ -28,9 +28,7 @@ public class CustomerServicesImpl implements CustomerServices{
 
     public CustomerResponseDto CreateCustomer (CustomerRequestDto customerrequestDto){
 
-
          Customers customer = AddCustomer(customerMapper.CustomerRequestToCustomer(customerrequestDto));
-
          return customerMapper.CustomerToCustomerResponseDto(customer);
 
     }
