@@ -1,0 +1,20 @@
+package cmms.humanresource.services;
+
+import cmms.humanresource.dto.EmployeeRequestDto;
+import cmms.humanresource.dto.EmployeeResponseDto;
+import cmms.humanresource.entity.Employee;
+
+import java.util.List;
+
+public interface EmployeeServices {
+
+    Employee addEmployee(Employee employee);
+
+    EmployeeResponseDto createEmployee(EmployeeRequestDto requestDto);
+
+    List<EmployeeResponseDto> getAllEmployee();
+
+    void deleteEmployee(Long id);
+
+    List<EmployeeResponseDto> getAllDeletedEmployees();
+}
