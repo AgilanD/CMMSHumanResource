@@ -1,5 +1,7 @@
 package cmms.humanresource.controller;
 
+import cmms.humanresource.aspect.AuditLoggable;
+import cmms.humanresource.common.entity.dto.AuditLogsRequestDto;
 import cmms.humanresource.dto.CustomerRequestDto;
 import cmms.humanresource.dto.CustomerResponseDto;
 import cmms.humanresource.dto.EmployeeRequestDto;
@@ -8,6 +10,7 @@ import cmms.humanresource.services.CustomerServices;
 import cmms.humanresource.services.EmployeeServices;
 import cmms.humanresource.usercontext.RequireRole;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -28,6 +31,7 @@ public class HumanResourceController {
     }
 
     @PostMapping("/addEmployee")
+    @AuditLoggable(action = AuditLogsRequestDto.AuditAction.CREATE, tableName = "Employee")
     @RequireRole({"ADMIN", "PLANT_MANAGER"})
     public EmployeeResponseDto addEmployee(@RequestBody EmployeeRequestDto requestDto) {
         return employeeservices.createEmployee(requestDto);
