@@ -13,6 +13,10 @@ public class EmployeeMapper {
     public EmployeeResponseDto employeeToEmployeeResponseDta(Plants plant , Employee savedEmployee){
         return EmployeeResponseDto.builder()
                 .id(savedEmployee.getId())
+                .createdAt(savedEmployee.getCreatedAt())
+                .createdBy(savedEmployee.getCreatedBy())
+                .lastModifiedAt(savedEmployee.getLastModifiedAt())
+                .lastModifiedBy(savedEmployee.getLastModifiedBy())
                 .employeeCode(savedEmployee.getEmployeeCode())
                 .fullName(savedEmployee.getFullName())
                 .designation(savedEmployee.getDesignation())
