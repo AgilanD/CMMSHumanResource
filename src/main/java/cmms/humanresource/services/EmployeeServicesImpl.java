@@ -29,6 +29,14 @@ public class EmployeeServicesImpl implements EmployeeServices {
     }
 
     @Override
+    public EmployeeResponseDto getEmployeeById(Long id) {
+        Employee employee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
+
+        return EmployeeMapper.convertToResponseDto(employee);
+    }
+
+    @Override
     public Employee addEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
@@ -59,5 +67,21 @@ public class EmployeeServicesImpl implements EmployeeServices {
                 .toList();
     }
 
+    @Override
+    public EmployeeResponseDto updateEmployee(Long id, EmployeeRequestDto requestDto) {
+        Employee existingEmployee = employeeRepository.findById(id)
+                .orElseThrow(() -> new EmployeeNotFoundException(id));
 
+        Plants plant = plantsRepository.findById(requestDto.getPlantId())
+                .orElseThrow(() -> new RuntimeException("Plant not found with ID: " + requestDto.getPlantId()));
+
+        existingEmployee.setFullName(requestDto.getFullName());
+        existingEmployee.setDesignation(requestDto.getDesignation());
+        existingEmployee.setDateOfBirth(requestDto.getDateOfBirth());
+        existingEmployee.setJoiningDate(requestDto.getJoiningDate());
+        existingEmployee.setPlant(plant);
+
+        Employee updatedEmployee = employeeRepository.save(existingEmployee);
+        return employeeMapper.employeeToEmployeeResponseDta(plant, updatedEmployee);
+    }
 }
